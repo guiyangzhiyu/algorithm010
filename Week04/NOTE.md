@@ -100,3 +100,27 @@ while left <= right:
     
 ```
 
+## 寻找一个半有序数组 [4, 5, 6, 7, 0, 1, 2] 中间无序的地方
+
+寻找无序的地方即寻找数组中的**最小值**
+
+```Java
+public int findMin(int[] nums) {
+    int start = 0,end = nums.length() - 1;
+    while (start < end) {
+        if (nums[start] < nums[end]) {
+            return nums[start];
+        } 
+        
+        int mid = start + (end - start)/2;
+        // 最小值在右侧
+        if (nums[mid] >= nums[left]) {
+            start = mid + 1;
+        } else {
+            end = mid;
+        }
+    }
+    return nums[start];
+}
+```
+
